@@ -1,0 +1,19 @@
+@media(max-width: 750px){
+	nav#navbar .navbar-items{
+		position: absolute;
+		background: var(--lightBlue);
+		top: 80px;
+		padding: 25px;
+		right: 5px;
+		transition: .3s;
+		transform: translateX(120%);
+		border-radius: 5px;
+		box-shadow: 0 0 5px rgba(0, 0, 0, .5) ;
+	}
+	nav#navbar .navbar-items.show{
+		transform: translateX(0);
+	}
+	nav#navbar .menu-toggler{
+		display: flex;
+	}
+} 
