@@ -3,6 +3,7 @@
 	--white: #f1f2f6;
 	--lightBlue:#70a1ff;
 }
+html,
 body{
 	overflow-x: hidden;
 }
@@ -20,7 +21,6 @@ a{
 
 #navbar{
 	display: flex;
-/*	height: 60px;*/
 	justify-content: space-between;
 	align-items: center;
 	background: var(--blue);
@@ -41,6 +41,7 @@ a{
 #navbar .logo{
 	font-size: 2rem;
 	font-weight: 600;
+	color: white;
 }
 
 #navbar .search-box form{
@@ -92,4 +93,103 @@ a{
 }
 #navbar .menu-toggler input[type=checkbox]:checked ~ span:nth-child(4){
 	transform: translate(5px,-15px) rotate(-45deg);
+}
+
+/*bagian main*/
+
+#shelf{
+	padding: 25px;
+}
+
+#shelf .section-wrapper{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+}
+
+#shelf  .section-title{
+	font-size: 1.8rem;
+	margin-bottom: 25px;
+}
+
+
+.card{
+	background: white;
+	padding: 15px;
+	border-radius: 7px;
+	box-shadow: 0 0 10px 2px rgba(0, 0, 0, .3);
+}
+
+/*pop up*/
+.bg-popup{
+	position: fixed;
+	inset: unset;
+	height: 100vh;
+	width: 100vw;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 999;
+	transition: .3s;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.bg-popup.show{
+	opacity: 1;
+	pointer-events: inherit;
+}
+
+.popup{
+	max-width: 550px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transition: .5s;
+	transform: translate(-50%,-50%);
+}
+.popup #close-popup{
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+}
+
+.popup #close-popup i{
+	font-size: 2.5rem;
+	color: red;
+}
+.popup #close-popup i:hover{
+	color: #ff6b81;
+}
+
+
+.popup .form-title{
+	font-size: 1.5rem;
+	margin-bottom: 15px;
+}
+
+.popup form .input-wrapper{
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-bottom: 15px;
+}
+
+.popup form .input-wrapper input{
+	padding: 7px 10px;
+	border-radius: 4px;
+	outline: unset;
+	border: 1px solid #2f3542;
+}
+
+.popup form button{
+	all: unset;
+	background: var(--blue);
+	padding: 7px 10px;
+	color: white;
+	border-radius: 3px;
+	margin-top: 15px;
+	cursor: pointer;
+}
+.popup form button:hover{
+	background: #70a1ff;
 }

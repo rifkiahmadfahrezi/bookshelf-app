@@ -12,7 +12,36 @@
 	<link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body>
+<!-- pop up -->
+<div class="bg-popup">
+	<div class="popup">
+		<div class="card popup-card" data-popup="addBookData">
+			<span id="close-popup"><i class='bx bxs-x-square'></i></span>
+			<h3 class="form-title">Tambah buku</h3>
+			<form action="">
+				<div class="input-wrapper">
+					<label for="bookTitle">Judul :</label>
+					<input type="text" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Judul buku harus diisi!')" required id="bookTitle">
+				</div>
+				<div class="input-wrapper">
+					<label for="bookWriter">Penulis :</label>
+					<input type="text" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Penulis buku harus diisi!')" required id="bookWriter">
+				</div>
+				<div class="input-wrapper">
+					<label for="bookYear">Tahun :</label>
+					<input type="number" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Tahun rilis buku harus diisi!')" required id="bookYear">
+				</div>
+				<div class="checkbox-wrapper">
+					<label for="bookComplete">Selesai dibaca :</label>
+					<input type="checkbox" id="bookComplete">
+				</div>
 
+				<button type="submit" id="addNewBook">Masukkan ke rak</button>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- akhir pop up -->
 <!-- navbar -->
 <nav id="navbar">
 	<div class="logo-wrapper">
@@ -26,7 +55,7 @@
 	</div>
 	<div class="navbar-items">
 		<div class="link-wrapper">
-			<a href="#" class="link">Tambah buku</a>
+			<a href="#" data-trigger-popup="addBookData" class="link">Tambah buku</a>
 		</div>
 		<div class="search-box">
 			<form action="/" method="get">
@@ -37,11 +66,26 @@
 	</div>
 </nav>
 <!-- akhir navbar -->
+<!-- bagian utama -->
+<main id="shelf">
+	<h1 class="section-title">Rak buku</h1>
 
+	<div class="section-wrapper">
 
+		<!-- untuk rak yg sudah selesai dibaca -->
+		<section data-read="true" class="card">
+			<h2 class="title">Sudah selesai dibaca</h2>
+		</section>
 
+		<!-- untuk rak yang belum selesai dibaca -->
+		<section data-read="false" class="card">
+			<h2 class="title">Belum selesai dibaca</h2>
+		</section>
 
+	</div>
 
+</main>
+<!-- akhir bagian utama -->
 <script src="assets/js/main.js"></script>
 </body>
 </html>

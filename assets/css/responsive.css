@@ -16,4 +16,7 @@
 	nav#navbar .menu-toggler{
 		display: flex;
 	}
+	#shelf .section-wrapper{
+		grid-template-columns: 1fr;
+	}
 } 
