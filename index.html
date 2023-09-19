@@ -12,24 +12,36 @@
 	<link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body>
+
+<!-- animasi preload -->
+<div class="preload">
+	<span>Loading...<i class='bx bxs-hourglass-top bx-spin' ></i></span>
+</div>
+
+<!-- notifikasi -->
+<div class="card notification">
+	
+</div>
+<!-- akhir notifikasi -->
+
 <!-- pop up -->
-<div class="bg-popup">
+<div class="bg-popup" data-add-popup>
 	<div class="popup">
 		<div class="card popup-card" data-popup="addBookData">
-			<span id="close-popup"><i class='bx bxs-x-square'></i></span>
+			<span id="close-popup" onclick="closePopup(document.querySelector('[data-add-popup]'))"><i class='bx bxs-x-square'></i></span>
 			<h3 class="form-title">Tambah buku</h3>
-			<form action="">
+			<form action="" id="addBook">
 				<div class="input-wrapper">
 					<label for="bookTitle">Judul :</label>
 					<input type="text" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Judul buku harus diisi!')" required id="bookTitle">
 				</div>
 				<div class="input-wrapper">
-					<label for="bookWriter">Penulis :</label>
-					<input type="text" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Penulis buku harus diisi!')" required id="bookWriter">
+					<label for="bookAuthor">Penulis :</label>
+					<input type="text" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Penulis buku harus diisi!')" required id="bookAuthor">
 				</div>
 				<div class="input-wrapper">
 					<label for="bookYear">Tahun :</label>
-					<input type="number" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Tahun rilis buku harus diisi!')" required id="bookYear">
+					<input type="number" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Tahun rilis buku harus diisi!')"  required id="bookYear">
 				</div>
 				<div class="checkbox-wrapper">
 					<label for="bookComplete">Selesai dibaca :</label>
@@ -37,6 +49,36 @@
 				</div>
 
 				<button type="submit" id="addNewBook">Masukkan ke rak</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="bg-popup" data-update-popup>
+	<div class="popup">
+		<div class="card popup-card" data-popup="addBookData">
+			<span id="close-popup" onclick="closePopup(document.querySelector('[data-update-popup]'))"><i class='bx bxs-x-square'></i></span>
+			<h3 class="form-title">Update buku</h3>
+			<form action="" onsubmit="closePopup(document.querySelector('[data-update-popup]'))" id="updateBook">
+				<div class="input-wrapper">
+					<label for="bookTitleUpdate">Judul :</label>
+					<input type="text" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Judul buku harus diisi!')" required id="bookTitleUpdate">
+				</div>
+				<div class="input-wrapper">
+					<label for="bookAuthorUpdate">Penulis :</label>
+					<input type="text" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Penulis buku harus diisi!')" required id="bookAuthorUpdate">
+				</div>
+				<div class="input-wrapper">
+					<label for="bookYearUpdate">Tahun :</label>
+					<input type="number" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Tahun rilis buku harus diisi!')"  required id="bookYearUpdate">
+				</div>
+				<!-- disembunyikan karena sudah ada tombol khusus -->
+				<!-- <div class="checkbox-wrapper">
+					<label for="bookCompleteUpdate">Selesai dibaca :</label>
+					<input type="checkbox" id="bookCompleteUpdate">
+				</div> -->
+
+				<button type="submit" id="addNewBook">Update & Masukkan ke rak</button>
 			</form>
 		</div>
 	</div>
@@ -59,7 +101,7 @@
 		</div>
 		<div class="search-box">
 			<form action="/" method="get">
-				<input type="text" placeholder="Cari buku disini...">
+				<input type="text" id="keyword" placeholder="Cari buku disini...">
 				<button type="submit"><i class='bx bx-search'></i></button>
 			</form>
 		</div>
@@ -68,24 +110,45 @@
 <!-- akhir navbar -->
 <!-- bagian utama -->
 <main id="shelf">
-	<h1 class="section-title">Rak buku</h1>
+	<h1 class="section-title" onclick="location.reload()">Rak buku</h1>
 
 	<div class="section-wrapper">
 
 		<!-- untuk rak yg sudah selesai dibaca -->
 		<section data-read="true" class="card">
 			<h2 class="title">Sudah selesai dibaca</h2>
+			<ol class="items-wrapper" id="read">
+				<!-- <li class="book-item">
+					<div class="text-wrapper">
+						<span class="title">Book title</span>
+						<span class="author">Writer</span>
+						<span class="year">Year</span>
+					</div>
+
+					<div class="btns">
+						<button type="button" id="redo"><i class='bx bx-redo' ></i></button>
+						<button type="button" id="done"><i class='bx bx-check'></i></button>
+						<button type="button" id="delete"><i class='bx bx-trash'></i></button>
+					</div>
+				</li> -->
+			</ol>
 		</section>
 
 		<!-- untuk rak yang belum selesai dibaca -->
 		<section data-read="false" class="card">
 			<h2 class="title">Belum selesai dibaca</h2>
+			<ol class="items-wrapper" id="unread"></ol>
 		</section>
 
 	</div>
 
 </main>
 <!-- akhir bagian utama -->
+<script>
+function closePopup(target){
+	target.classList.remove('show')
+}
+</script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

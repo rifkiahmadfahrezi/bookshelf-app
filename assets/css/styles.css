@@ -111,7 +111,77 @@ a{
 	font-size: 1.8rem;
 	margin-bottom: 25px;
 }
+#shelf .section-wrapper section .title{
+	margin-bottom: 15px;
+}
 
+#shelf .section-wrapper .items-wrapper .book-item{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#shelf .section-wrapper .items-wrapper .book-item .btns button{
+	all: unset;
+	padding: 3px 6px;
+	cursor: pointer;
+	border-radius: 2px;
+	color: white;
+	margin: 0 2px;
+}
+#shelf .section-wrapper .items-wrapper .book-item .btns button#redo{
+	background: #ffa502;
+}
+#shelf .section-wrapper .items-wrapper .book-item .btns button#done{
+	background: #2ed573;
+}
+#shelf .section-wrapper .items-wrapper .book-item .btns button#delete{
+	background: #ff4757;
+}
+#shelf .section-wrapper .items-wrapper .book-item .btns button#edit{
+	background: var(--blue);
+}
+#shelf .section-wrapper .items-wrapper .book-item .btns button#edit:hover{
+	background: var(--blue);
+	opacity: .75;
+}
+
+#shelf .section-wrapper .items-wrapper .book-item .btns button#redo:hover{
+	background: #ffa502;
+	opacity: .75;
+}
+#shelf .section-wrapper .items-wrapper .book-item .btns button#done:hover{
+	background: #2ed573;
+	opacity: .75;
+}
+#shelf .section-wrapper .items-wrapper .book-item .btns button#delete:hover{
+	background: #ff4757;
+	opacity: .75;
+}
+
+#shelf .section-wrapper .items-wrapper .book-item .text-wrapper{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-evenly;
+}
+
+#shelf .section-wrapper .items-wrapper .book-item:nth-child(even){
+	background: var(--white);
+	padding: 5px;
+}
+
+#shelf .section-wrapper .items-wrapper .book-item .text-wrapper span:nth-child(1){
+	font-size: 1.2rem;
+	margin-bottom: -5px;
+	text-transform: capitalize;
+}#shelf .section-wrapper .items-wrapper .book-item .text-wrapper span:nth-child(2){
+	font-size: .95rem;
+	text-transform: capitalize;
+}
+#shelf .section-wrapper .items-wrapper .book-item .text-wrapper span:nth-child(3){
+	font-size: .75rem;
+}
 
 .card{
 	background: white;
@@ -192,4 +262,42 @@ a{
 }
 .popup form button:hover{
 	background: #70a1ff;
+}
+
+.notification{
+	position: fixed;
+	inset: unset;
+	left: 50%;
+	top: -100%;
+	transition: .5s;
+	z-index: 999;
+	transform: translate(-50%,-50%);
+}
+.notification.show{
+	top: 10%;
+}
+
+
+/*preload animation*/
+.preload{
+	position: fixed;
+	inset: unset;
+	z-index: 99;
+	background: var(--blue);
+	width: 100vw;
+	height: 100vh;
+	transition: .5s;
+}
+
+.preload.hide{
+	transform: translateY(-100%);
+}
+
+.preload span{
+	color: white;
+	font-size: 2rem;
+	top: 50%;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%,-50%);
 }
